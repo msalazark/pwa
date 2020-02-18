@@ -35,11 +35,10 @@ self.addEventListener("install", e => {
 				return cache.addAll(urlsToCache)
 						.then( ()=> {
 							self.skipWaiting();
-						})
-						.catch( err => {
-							console.log("no se registró Caché" , err ); 
-						}); 
+						});
+
 			})
+			.catch( err => console.log("no se registró Caché" , err )) 	
 	); 
 }); 
 
@@ -53,7 +52,7 @@ self.addEventListener("activate" , e => {
 				return Promise.all(
 					cacheNames.map( cacheName => {
 						if (cacheWhitelist.indexOf(cacheName) === -1 ) {
-							// eliminar elementos no necesiados 
+							// eliminar elementos no necesitados 
 							return caches.delete(cacheName); 
 						}
 					}) 
@@ -75,12 +74,13 @@ self.addEventListener ( 'fetch' , e => {
 		caches.match( e.request )
 				.then( res => {
 					if (res) {
+						// devuelvo ratos de cache 
 						return res; 
 					}
 					return fetch(e.request); 
-				}); 
-	); 
-}); 
+				})
+	);
+});
 
 
 
