@@ -4,7 +4,7 @@ const CACHE_NAME = "vl_cache_mask"
 // ficheros en el cache de la aplicación 
 var urlsToCache = [
 	"./", 
-	"./css/styles.css" , 
+	"./css/style.css" , 
 	"./img/favicon.png" , 
 	"./img/1.png" , 
 	"./img/2.png" , 
@@ -36,7 +36,6 @@ self.addEventListener("install", e => {
 						.then( ()=> {
 							self.skipWaiting();
 						});
-
 			})
 			.catch( err => console.log("no se registró Caché" , err )) 	
 	); 
@@ -45,7 +44,6 @@ self.addEventListener("install", e => {
 // evento activate 
 self.addEventListener("activate" , e => {
 	const cacheWhitelist = [CACHE_NAME];
-
 	e.waitUntil(
 		caches.keys()
 			.then( cacheNames => {
@@ -66,9 +64,7 @@ self.addEventListener("activate" , e => {
 
 }); 
 
-
 // evento fetch  
-
 self.addEventListener ( 'fetch' , e => {
 	e.respondWith(
 		caches.match( e.request )

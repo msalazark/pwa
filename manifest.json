@@ -1,5 +1,6 @@
-
+	
 {
+	"$schema": "http://json.schemastore.org/web-manifest",
 	"name": "Curso de PWA - Miguel Salazar" ,
 	"short_name": "Curso de PWA", 
 	"description": "Aplicación para el curso PWA" , 
@@ -62,6 +63,5 @@
 			"type": "image/png"
 		}										 	
 	]
-
 
 }
